@@ -61,6 +61,7 @@ const sampleDataForPhotoList = [
 const App = () => {
   return (
     <div className="App">
+      
       <PhotoList
         photos={sampleDataForPhotoList}
       />

@@ -4,10 +4,18 @@ import FavIcon from './FavIcon';
 import '../styles/PhotoFavButton.scss';
 
 function PhotoFavButton() {
+  const [fav, setFav] = useState(false);
+
+  // click handler to toggle setFav state
+  const clickHandler = () => {
+    console.log(fav);
+    setFav(!fav);
+  }
+
   return (
-    <div className="photo-list__fav-icon">
+    <div className="photo-list__fav-icon" onClick={clickHandler}>
       <div className="photo-list__fav-icon-svg">
-        {/* Insert React */}
+        <FavIcon fill={fav ? "#C80000" : "EEEEEE"}/>
       </div>
     </div>
   );

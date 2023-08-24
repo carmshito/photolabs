@@ -20,6 +20,7 @@ const PhotoList = (props) => {
   }
   return (
     <ul className="photo-list">
+      
       {photoList}
     </ul>
   );
