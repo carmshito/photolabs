@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 
 // consists of top nav bar and photos section
 
@@ -8,12 +9,19 @@ import PhotoList from 'components/PhotoList';
 
 const HomeRoute = (props) => {
   const { topics, photos } = props
+  const [ favPhotos, setFavPhotos ] = useState([]);
+
   return (
     <div className="home-route">
       <TopNavigation 
-        topics={topics}/>
+        topics={topics}
+        favPhotos={favPhotos}
+      />
       <PhotoList 
-        photos={photos}/>
+        photos={photos}
+        favPhotos={favPhotos}
+        setFavPhotos={setFavPhotos}
+      />
     </div>
   );
 };

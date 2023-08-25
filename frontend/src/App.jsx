@@ -7,7 +7,6 @@ import HomeRoute from 'routes/HomeRoute';
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
-  console.log('photos', photos, 'topics', topics)
   return (
     <div className="App">
       <HomeRoute 

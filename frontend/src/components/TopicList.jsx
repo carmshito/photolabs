@@ -2,6 +2,7 @@ import React from "react";
 
 import "../styles/TopicList.scss";
 import TopicListItem from "./TopicListItem";
+import topics from "mocks/topics";
 
 
 const TopicList = (props) => {
@@ -11,6 +12,7 @@ const TopicList = (props) => {
         return (
           <span key={topic.id}>
             <TopicListItem
+              key={topic.id}
               title={topic.title}
             />
           </span>
