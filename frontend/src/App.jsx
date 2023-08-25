@@ -12,10 +12,15 @@ import PhotoDetailsModal from 'routes/PhotoDetailsModal';
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
-  
+
+  // state for photo in modal
+  const [photo, setPhoto] = useState({});
+
+  // state for modal
   const [isOpen, setIsOpen] = useState(false);
   
-  const openModal = () => {
+  const openModal = (photo) => {
+    setPhoto(photo);
     setIsOpen(true);
   }
   
@@ -30,7 +35,7 @@ const App = () => {
         photos={photos}
         openModal={openModal}
       />
-      { isOpen ? <PhotoDetailsModal closeModal={closeModal}/> : null }
+      { isOpen ? <PhotoDetailsModal closeModal={closeModal} photo={photo}/> : null }
     </div>
   );
 };
