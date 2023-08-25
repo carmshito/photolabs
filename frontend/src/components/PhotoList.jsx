@@ -1,10 +1,15 @@
 import React from "react";
 
+// styling
 import "../styles/PhotoList.scss";
+
+// components
 import PhotoListItem from "./PhotoListItem";
 
 const PhotoList = (props) => {
-  const { photos, favPhotos, setFavPhotos } = props;
+
+  const { photos, favPhotos, setFavPhotos, openModal, closeModal } = props;
+
   return (
     <ul className="photo-list">
       {photos.map((photo) => {
@@ -20,6 +25,8 @@ const PhotoList = (props) => {
               profile={photo.user.profile}
               favPhotos={favPhotos}
               setFavPhotos={setFavPhotos}
+              openModal={openModal}
+              closeModal={closeModal}
             />
           </li>
         );
