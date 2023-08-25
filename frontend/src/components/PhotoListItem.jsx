@@ -14,6 +14,7 @@ const PhotoListItem = (props) => {
     openModal({
       id, 
       imageSource,
+      profile,
       username,
       city,
       country
