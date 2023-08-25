@@ -8,7 +8,6 @@ function PhotoFavButton(props) {
 
   const isFav = favPhotos.includes(id);
 
-  // click handler to toggle setFav state
   const favHandler = () => {
     if (isFav) {
       setFavPhotos(favPhotos.filter((photoId) => photoId !== id));
@@ -17,7 +16,7 @@ function PhotoFavButton(props) {
     }
   };
 
-  console.log(isFav);
+  // console.log(isFav);
 
   return (
     <div className="photo-list__fav-icon" onClick={favHandler}>
