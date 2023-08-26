@@ -62,17 +62,3 @@ const PhotoDetailsModal = (props) => {
 };
 
 export default PhotoDetailsModal;
-
-/*  <div className="photo-list__item">
-      <PhotoFavButton id={id} favPhotos={favPhotos} setFavPhotos={setFavPhotos}/>
-      <img className="photo-list__image" src={imageSource} onClick={handleOpenModal}/>
-      <div className="photo-list__user-details">
-        <img className="photo-list__user-profile" src={profile} />
-        <div className="photo-list__user-info">
-          <p className="photo-list__user-details">{username}</p>
-          <p className="photo-list__user-location">{city}, {country}</p>
-        </div>
-      </div>
-    </div>
-
-    */

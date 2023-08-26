@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 // styling
 import './App.scss';
@@ -9,27 +9,19 @@ import topics from 'mocks/topics';
 
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
+import useApplicationData from 'hooks/useApplicationData';
 
 // Note: Rendering a single component to build components in isolation
 const App = () => {
 
-  // state for selected photo in modal
-  const [selectedPhoto, setSelectedPhoto] = useState({});
-
-  // state for fav photos
-  const [ favPhotos, setFavPhotos ] = useState([]);
-
-  // state for modal
-  const [isOpen, setIsOpen] = useState(false);
-  
-  const openModal = (selectedPhoto) => {
-    setSelectedPhoto(selectedPhoto);
-    setIsOpen(true);
-  }
-  
-  const closeModal = () => {
-    setIsOpen(false);
-  }
+  const {
+    favPhotos,
+    setFavPhotos,
+    selectedPhoto,
+    isOpen,
+    openModal,
+    closeModal
+  } = useApplicationData();
 
   return (
     <div className="App">
