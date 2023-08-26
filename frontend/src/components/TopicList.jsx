@@ -1,14 +1,19 @@
 import React from "react";
 
+// styling
 import "../styles/TopicList.scss";
+
+// components
 import TopicListItem from "./TopicListItem";
-import topics from "mocks/topics";
 
 
 const TopicList = (props) => {
+
+  const { topics } = props
+
   return (
     <div className="top-nav-bar__topic-list">
-      {props.topics.map((topic) => {
+      {topics.map((topic) => {
         return (
           <span key={topic.id}>
             <TopicListItem

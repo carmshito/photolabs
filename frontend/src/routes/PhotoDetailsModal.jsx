@@ -7,17 +7,19 @@ import '../styles/PhotoDetailsModal.scss';
 import PhotoList from 'components/PhotoList';
 import PhotoFavButton from 'components/PhotoFavButton';
 
+// assets
 import closeSymbol from '../assets/closeSymbol.svg';
 
 const PhotoDetailsModal = (props) => {
 
-  const { closeModal, selectedPhoto, favPhotos, setFavPhotos, photos } = props;
-
-  const handleCloseModal = () => {
-    closeModal();
-  };
-
-  // console.log(selectedPhoto);
+  const {
+    handleCloseModal,
+    selectedPhoto,
+    favPhotos,
+    setFavPhotos,
+    photos,
+    favClickHandler,
+  } = props;
 
   return (
     <div className="photo-details-modal">
@@ -31,6 +33,7 @@ const PhotoDetailsModal = (props) => {
           id={selectedPhoto.id}
           favPhotos={favPhotos}
           setFavPhotos={setFavPhotos}
+          favClickHandler={favClickHandler}
         />
       </div>
 
@@ -47,7 +50,7 @@ const PhotoDetailsModal = (props) => {
           </div>
         </div>
 
-      <hr></hr>
+        <hr></hr>
         <div className="photo-details-modal__header">
           <span>Similar Photos</span>
         </div>
@@ -55,6 +58,7 @@ const PhotoDetailsModal = (props) => {
           photos={photos}
           favPhotos={favPhotos}
           setFavPhotos={setFavPhotos}
+          favClickHandler={favClickHandler}
         />
       </div>
     </div >

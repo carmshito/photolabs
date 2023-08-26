@@ -1,7 +1,4 @@
 import React from 'react';
-import { useState } from 'react';
-
-// consists of top nav bar and photos section
 
 // styling
 import '../styles/HomeRoute.scss';
@@ -10,9 +7,18 @@ import '../styles/HomeRoute.scss';
 import TopNavigation from 'components/TopNavigationBar';
 import PhotoList from 'components/PhotoList';
 
+
 const HomeRoute = (props) => {
 
-  const { topics, photos, openModal, favPhotos, setFavPhotos } = props
+  const {
+    topics,
+    photos,
+    openModal,
+    favPhotos,
+    setFavPhotos,
+    favClickHandler,
+    handleDisplayModalPhoto 
+  } = props
 
   return (
     <div className="home-route">
@@ -25,6 +31,8 @@ const HomeRoute = (props) => {
         openModal={openModal}
         favPhotos={favPhotos}
         setFavPhotos={setFavPhotos}
+        favClickHandler={favClickHandler}
+        handleDisplayModalPhoto={handleDisplayModalPhoto}
       />
     </div>
   );

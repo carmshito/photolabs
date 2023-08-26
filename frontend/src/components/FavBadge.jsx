@@ -1,7 +1,11 @@
 import React from 'react';
+
+// styling
+import '../styles/FavBadge.scss';
+
+// components
 import FavIcon from './FavIcon';
 
-import '../styles/FavBadge.scss';
 
 const FavBadge = ({ isFavPhotoExist }) => {
   return (
