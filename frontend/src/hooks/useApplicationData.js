@@ -6,7 +6,8 @@ const ACTIONS = {
   SELECT_PHOTO: 'SELECT_PHOTO',
   DISPLAY_MODAL: 'DISPLAY_PHOTO_DETAILS',
   SET_PHOTO_DATA: 'SET_PHOTO_DATA',
-  SET_TOPIC_DATA: 'SET_TOPIC_DATA'
+  SET_TOPIC_DATA: 'SET_TOPIC_DATA',
+  GET_PHOTOS_BY_TOPICS: 'GET_PHOTOS_BY_TOPICS'
 };
 
 const reducer = (state, action) => {
@@ -21,6 +22,8 @@ const reducer = (state, action) => {
       return { ...state, photoData: action.payload };
     case ACTIONS.SET_TOPIC_DATA:
       return { ...state, topicData: action.payload };
+    case ACTIONS.GET_PHOTOS_BY_TOPICS:
+      return { ...state, photoData: action.payload };
     default:
       return state;
   }
@@ -40,23 +43,34 @@ const useApplicationData = () => {
 
   // fetch photos and topics
   useEffect(() => {
-    
+
     const photoPromise = axios.get('/api/photos');
     const topicPromise = axios.get('/api/topics');
-  
+    
     const promises = [photoPromise, topicPromise];
-
+    
     Promise.all(promises)
-      .then((resArr) => {
-        const photos = resArr[0].data;
-        const topics = resArr[1].data;
-        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: photos });
-        dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: topics });
+    .then((resArr) => {
+      const photos = resArr[0].data;
+      const topics = resArr[1].data;
+      dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: photos });
+      dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: topics });
+    })
+    .catch((err) => {
+      console.error("Error fetching photos and topics:", err);
+    });
+  }, []);
+  
+  // fetch photos on selected topic
+  const fetchTopicPhotos = (topicId) => {
+    axios.get(`/api/topics/photos/${topicId}`)
+      .then((res) => {
+        dispatch({ type: ACTIONS.GET_PHOTOS_BY_TOPICS, payload: res.data });
       })
       .catch((err) => {
-        console.error("ERROR:", err);
+        console.error("Error fetching topic photos", err);
       });
-    }, []);
+  };
 
   // open and close modal state
   const openModal = () => {
@@ -101,11 +115,12 @@ const useApplicationData = () => {
     setFavPhotos,
     handleDisplayModalPhoto,
     favClickHandler,
+    fetchTopicPhotos,
     favPhotos: state.favPhotos,
     selectedPhoto: state.selectedPhoto,
     isOpen: state.isOpen,
     photos: state.photoData,
-    topics: state.topicData
+    topics: state.topicData,
   };
 };
 

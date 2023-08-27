@@ -9,7 +9,7 @@ import TopicListItem from "./TopicListItem";
 
 const TopicList = (props) => {
 
-  const { topics } = props
+  const { topics, fetchTopicPhotos} = props
 
   return (
     <div className="top-nav-bar__topic-list">
@@ -17,8 +17,9 @@ const TopicList = (props) => {
         return (
           <span key={topic.id}>
             <TopicListItem
-              key={topic.id}
+              id={topic.id}
               title={topic.title}
+              fetchTopicPhotos={fetchTopicPhotos}
             />
           </span>
         );

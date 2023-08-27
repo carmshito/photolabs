@@ -18,7 +18,8 @@ const HomeRoute = (props) => {
     setFavPhotos,
     favClickHandler,
     handleDisplayModalPhoto,
-    isOpen
+    isOpen,
+    fetchTopicPhotos,
   } = props
 
   return (
@@ -26,6 +27,7 @@ const HomeRoute = (props) => {
       <TopNavigation 
         topics={topics}
         favPhotos={favPhotos}
+        fetchTopicPhotos={fetchTopicPhotos}
       />
       <PhotoList 
         photos={photos}

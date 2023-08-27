@@ -16,7 +16,7 @@ const PhotoList = (props) => {
     closeModal,
     favClickHandler,
     handleDisplayModalPhoto,
-    isOpen
+    isOpen,
   } = props;
 
   return (

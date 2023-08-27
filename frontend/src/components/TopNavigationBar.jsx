@@ -10,7 +10,7 @@ import FavBadge from './FavBadge';
 
 const TopNavigation = (props) => {
 
-  const { topics, favPhotos } = props;
+  const { topics, favPhotos, fetchTopicPhotos } = props;
 
   // check favPhotos array to see if photos exist in array
   const isFavPhotoExist = favPhotos.length;
@@ -19,7 +19,7 @@ const TopNavigation = (props) => {
     <div className="top-nav-bar">
       <span className="top-nav-bar__logo">PhotoLabs</span>
       <div className="top-nav-bar__topics">
-        <TopicList topics={topics} />
+        <TopicList topics={topics} fetchTopicPhotos={fetchTopicPhotos}/>
       </div>
       <FavBadge isFavPhotoExist={isFavPhotoExist} />
     </div>
