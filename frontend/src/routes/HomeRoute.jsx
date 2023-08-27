@@ -17,7 +17,8 @@ const HomeRoute = (props) => {
     favPhotos,
     setFavPhotos,
     favClickHandler,
-    handleDisplayModalPhoto 
+    handleDisplayModalPhoto,
+    isOpen
   } = props
 
   return (
@@ -33,6 +34,7 @@ const HomeRoute = (props) => {
         setFavPhotos={setFavPhotos}
         favClickHandler={favClickHandler}
         handleDisplayModalPhoto={handleDisplayModalPhoto}
+        isOpen={isOpen}
       />
     </div>
   );

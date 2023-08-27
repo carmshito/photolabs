@@ -39,17 +39,23 @@ const useApplicationData = () => {
   const [state, dispatch] = useReducer(reducer, defaultState);
 
   // fetch photos and topics
-  const photoPromise = axios.get('/api/photos');
-  const topicPromise = axios.get('/api/topics');
+  useEffect(() => {
+    
+    const photoPromise = axios.get('/api/photos');
+    const topicPromise = axios.get('/api/topics');
+  
+    const promises = [photoPromise, topicPromise];
 
-  const promises = [photoPromise, topicPromise];
-
-  Promise.all(promises)
-    .then((resArr) => {
-      const photos = resArr[0].data;
-      const topics = resArr[1].data;
-      dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: photos });
-      dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: topics });
+    Promise.all(promises)
+      .then((resArr) => {
+        const photos = resArr[0].data;
+        const topics = resArr[1].data;
+        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: photos });
+        dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: topics });
+      })
+      .catch((err) => {
+        console.error("ERROR:", err);
+      });
     }, []);
 
   // open and close modal state

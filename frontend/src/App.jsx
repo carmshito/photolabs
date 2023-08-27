@@ -37,6 +37,7 @@ const App = () => {
         setFavPhotos={setFavPhotos}
         favClickHandler={favClickHandler}
         handleDisplayModalPhoto={handleDisplayModalPhoto}
+        isOpen={isOpen}
       />
       {isOpen ?
         <PhotoDetailsModal
@@ -46,6 +47,7 @@ const App = () => {
           setFavPhotos={setFavPhotos}
           photos={photos}
           handleCloseModal={handleCloseModal}
+          handleDisplayModalPhoto={handleDisplayModalPhoto}
           favClickHandler={favClickHandler}
         /> : null}
 
