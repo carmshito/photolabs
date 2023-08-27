@@ -3,10 +3,6 @@ import React from 'react';
 // styling
 import './App.scss';
 
-// mock data
-import photos from 'mocks/photos';
-import topics from 'mocks/topics';
-
 // routes
 import HomeRoute from 'routes/HomeRoute';
 import PhotoDetailsModal from 'routes/PhotoDetailsModal';
@@ -26,7 +22,9 @@ const App = () => {
     favClickHandler,
     favPhotos,
     selectedPhoto,
-    isOpen
+    isOpen,
+    photos,
+    topics
   } = useApplicationData();
 
   return (
