@@ -11,9 +11,9 @@ Users can:
 
 # Final Product
 
-!["homepage"]()
+!["homepage"](https://raw.githubusercontent.com/lighthouse-labs/photolabs-starter/634213e64e7b3635b5c48541bcf3b41c6f7f7f0d/frontend/public/homepage.png)
 
-!["final product gif"]()
+!["final product gif"](https://raw.githubusercontent.com/lighthouse-labs/photolabs-starter/634213e64e7b3635b5c48541bcf3b41c6f7f7f0d/frontend/public/final-product-gif.gif)
 
 ## Setup
 
