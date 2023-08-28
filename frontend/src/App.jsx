@@ -21,6 +21,7 @@ const App = () => {
     handleDisplayModalPhoto,
     favClickHandler,
     fetchTopicPhotos,
+    fetchAllPhotos,
     favPhotos,
     selectedPhoto,
     isOpen,
@@ -40,6 +41,7 @@ const App = () => {
         handleDisplayModalPhoto={handleDisplayModalPhoto}
         isOpen={isOpen}
         fetchTopicPhotos={fetchTopicPhotos}
+        fetchAllPhotos={fetchAllPhotos}
       />
       {isOpen ?
         <PhotoDetailsModal

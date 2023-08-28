@@ -19,6 +19,7 @@ const HomeRoute = (props) => {
     handleDisplayModalPhoto,
     isOpen,
     fetchTopicPhotos,
+    fetchAllPhotos
   } = props;
 
   return (
@@ -27,6 +28,7 @@ const HomeRoute = (props) => {
         topics={topics}
         favPhotos={favPhotos}
         fetchTopicPhotos={fetchTopicPhotos}
+        fetchAllPhotos={fetchAllPhotos}
       />
       <PhotoList
         photos={photos}

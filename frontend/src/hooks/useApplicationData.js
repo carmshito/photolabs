@@ -72,6 +72,18 @@ const useApplicationData = () => {
       });
   };
 
+  // fetch all photos
+  const fetchAllPhotos = () => {
+    axios.get('/api/photos')
+      .then((res) => {
+        const photos = res.data;
+        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: photos });
+      })
+      .catch((err) => {
+        console.error("Error fetching topic photos", err);
+      });
+  };
+
   // open and close modal state
   const openModal = () => {
     dispatch({ type: ACTIONS.DISPLAY_MODAL, payload: true });
@@ -115,6 +127,7 @@ const useApplicationData = () => {
     handleDisplayModalPhoto,
     favClickHandler,
     fetchTopicPhotos,
+    fetchAllPhotos,
     favPhotos: state.favPhotos,
     selectedPhoto: state.selectedPhoto,
     isOpen: state.isOpen,
