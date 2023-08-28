@@ -24,8 +24,13 @@ const PhotoListItem = (props) => {
 
   return (
     <div className="photo-list__item">
-      <PhotoFavButton id={id} favPhotos={favPhotos} setFavPhotos={setFavPhotos} favClickHandler={favClickHandler} />
-      <img className="photo-list__image" src={imageSource} onClick={() => !isOpen && handleDisplayModalPhoto({ id, imageSource, profile, username, city, country})} />
+      <PhotoFavButton
+        id={id}
+        favPhotos={favPhotos}
+        setFavPhotos={setFavPhotos}
+        favClickHandler={favClickHandler}
+      />
+      <img className="photo-list__image" src={imageSource} onClick={() => !isOpen && handleDisplayModalPhoto({ id, imageSource, profile, username, city, country })} />
       <div className="photo-list__user-details">
         <img className="photo-list__user-profile" src={profile} />
         <div className="photo-list__user-info">

@@ -46,21 +46,21 @@ const useApplicationData = () => {
 
     const photoPromise = axios.get('/api/photos');
     const topicPromise = axios.get('/api/topics');
-    
+
     const promises = [photoPromise, topicPromise];
-    
+
     Promise.all(promises)
-    .then((resArr) => {
-      const photos = resArr[0].data;
-      const topics = resArr[1].data;
-      dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: photos });
-      dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: topics });
-    })
-    .catch((err) => {
-      console.error("Error fetching photos and topics:", err);
-    });
+      .then((resArr) => {
+        const photos = resArr[0].data;
+        const topics = resArr[1].data;
+        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: photos });
+        dispatch({ type: ACTIONS.SET_TOPIC_DATA, payload: topics });
+      })
+      .catch((err) => {
+        console.error("Error fetching photos and topics:", err);
+      });
   }, []);
-  
+
   // fetch photos on selected topic
   const fetchTopicPhotos = (topicId) => {
     axios.get(`/api/topics/photos/${topicId}`)
@@ -80,7 +80,6 @@ const useApplicationData = () => {
   const closeModal = () => {
     dispatch({ type: ACTIONS.DISPLAY_MODAL, payload: false });
   };
-
 
   // click handler to close modal
   const handleCloseModal = () => {

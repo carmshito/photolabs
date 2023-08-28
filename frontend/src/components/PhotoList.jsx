@@ -12,8 +12,6 @@ const PhotoList = (props) => {
     photos,
     favPhotos,
     setFavPhotos,
-    openModal,
-    closeModal,
     favClickHandler,
     handleDisplayModalPhoto,
     isOpen,
@@ -26,7 +24,6 @@ const PhotoList = (props) => {
           <li key={photo.id}>
             <PhotoListItem
               id={photo.id}
-              key={photo.id}
               city={photo.location.city}
               country={photo.location.country}
               imageSource={photo.urls.full}
@@ -34,8 +31,6 @@ const PhotoList = (props) => {
               profile={photo.user.profile}
               favPhotos={favPhotos}
               setFavPhotos={setFavPhotos}
-              openModal={openModal}
-              closeModal={closeModal}
               favClickHandler={favClickHandler}
               handleDisplayModalPhoto={handleDisplayModalPhoto}
               isOpen={isOpen}

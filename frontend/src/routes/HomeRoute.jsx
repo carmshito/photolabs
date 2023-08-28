@@ -7,7 +7,6 @@ import '../styles/HomeRoute.scss';
 import TopNavigation from 'components/TopNavigationBar';
 import PhotoList from 'components/PhotoList';
 
-
 const HomeRoute = (props) => {
 
   const {
@@ -20,16 +19,16 @@ const HomeRoute = (props) => {
     handleDisplayModalPhoto,
     isOpen,
     fetchTopicPhotos,
-  } = props
+  } = props;
 
   return (
     <div className="home-route">
-      <TopNavigation 
+      <TopNavigation
         topics={topics}
         favPhotos={favPhotos}
         fetchTopicPhotos={fetchTopicPhotos}
       />
-      <PhotoList 
+      <PhotoList
         photos={photos}
         openModal={openModal}
         favPhotos={favPhotos}
