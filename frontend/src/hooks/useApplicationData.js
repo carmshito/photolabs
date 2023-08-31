@@ -26,7 +26,7 @@ const reducer = (state, action) => {
     case ACTIONS.GET_PHOTOS_BY_TOPICS:
       return { ...state, photoData: action.payload };
     case ACTIONS.SET_SIMILAR_PHOTOS:
-      return { ...state, similarPhotos: action.payload};
+      return { ...state, similarPhotos: action.payload };
     default:
       return state;
   }
@@ -76,33 +76,32 @@ const useApplicationData = () => {
       });
   };
 
-  
   // fetch all photos
   const fetchAllPhotos = () => {
     axios.get('/api/photos')
-    .then((res) => {
-      const photos = res.data;
-      dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: photos });
-    })
-    .catch((err) => {
-      console.error("Error fetching topic photos", err);
-    });
+      .then((res) => {
+        const photos = res.data;
+        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: photos });
+      })
+      .catch((err) => {
+        console.error("Error fetching topic photos", err);
+      });
   };
-  
+
   // open and close modal state
   const openModal = () => {
     dispatch({ type: ACTIONS.DISPLAY_MODAL, payload: true });
   };
-  
+
   const closeModal = () => {
     dispatch({ type: ACTIONS.DISPLAY_MODAL, payload: false });
   };
-  
+
   // click handler to close modal
   const handleCloseModal = () => {
     closeModal();
   };
-  
+
   // click handler to display modal photo
   const handleDisplayModalPhoto = (photo) => {
     dispatch({ type: ACTIONS.SELECT_PHOTO, payload: photo });
@@ -114,17 +113,16 @@ const useApplicationData = () => {
     for (const pic of photos) {
       if (photoId === pic.id) {
         const similarPhotos = pic.similar_photos;
-        dispatch({ type: ACTIONS.SET_SIMILAR_PHOTOS, payload: similarPhotos});
+        dispatch({ type: ACTIONS.SET_SIMILAR_PHOTOS, payload: similarPhotos });
       }
     }
-
   };
-  
+
   // fav photos state
   const setFavPhotos = (favPhotos) => {
     dispatch({ type: ACTIONS.FAV_PHOTO_ADDED, payload: favPhotos });
   };
-  
+
   // click handler for fav photos
   const favClickHandler = (id) => {
     const { favPhotos } = state;
@@ -134,7 +132,7 @@ const useApplicationData = () => {
       setFavPhotos([...favPhotos, id]);
     }
   };
-  
+
   return {
     openModal,
     closeModal,
