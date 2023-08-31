@@ -18,7 +18,7 @@ const PhotoList = (props) => {
   } = props;
 
   return (
-    <ul className="photo-list">
+    <ul className={!isOpen ? "photo-list-centre" : "photo-list"}>
       {photos.map((photo) => {
         return (
           <li key={photo.id}>

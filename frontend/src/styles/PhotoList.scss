@@ -12,3 +12,13 @@
   flex: 0 1 30%;
   margin: 5px;
 }
+
+.photo-list-centre {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}

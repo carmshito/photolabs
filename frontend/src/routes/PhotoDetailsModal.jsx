@@ -19,7 +19,8 @@ const PhotoDetailsModal = (props) => {
     similarPhotos,
     setFavPhotos,
     favClickHandler,
-    handleDisplayModalPhoto
+    handleDisplayModalPhoto,
+    isOpen
   } = props;
 
   return (
@@ -61,6 +62,7 @@ const PhotoDetailsModal = (props) => {
           setFavPhotos={setFavPhotos}
           favClickHandler={favClickHandler}
           handleDisplayModalPhoto={handleDisplayModalPhoto}
+          isOpen={isOpen}
         />
       </div>
     </div >

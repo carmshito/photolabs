@@ -54,6 +54,7 @@ const App = () => {
           handleDisplayModalPhoto={handleDisplayModalPhoto}
           favClickHandler={favClickHandler}
           similarPhotos={similarPhotos}
+          isOpen={isOpen}
         /> : null}
 
     </div>

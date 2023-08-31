@@ -6,6 +6,7 @@
   border-style: solid;
   border-radius: 8px;
   max-width: fit-content;
+  cursor: pointer;
 }
 
 .photo-list__image {
@@ -46,4 +47,11 @@
 .photo-list__user-location {
   color: #838383;
   margin: 0px 0px 0px 5px
+}
+
+.photo-list__image-centre {
+  user-select: none;
+  width: 50rem;
+  height: 40rem;
+  object-fit: cover;
 }
