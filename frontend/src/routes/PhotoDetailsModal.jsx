@@ -16,8 +16,8 @@ const PhotoDetailsModal = (props) => {
     handleCloseModal,
     selectedPhoto,
     favPhotos,
+    similarPhotos,
     setFavPhotos,
-    photos,
     favClickHandler,
     handleDisplayModalPhoto
   } = props;
@@ -56,7 +56,7 @@ const PhotoDetailsModal = (props) => {
           <span>Similar Photos</span>
         </div>
         <PhotoList
-          photos={photos}
+          photos={similarPhotos}
           favPhotos={favPhotos}
           setFavPhotos={setFavPhotos}
           favClickHandler={favClickHandler}

@@ -27,6 +27,7 @@ const App = () => {
     isOpen,
     photos,
     topics,
+    similarPhotos
   } = useApplicationData();
 
   return (
@@ -49,10 +50,10 @@ const App = () => {
           selectedPhoto={selectedPhoto}
           favPhotos={favPhotos}
           setFavPhotos={setFavPhotos}
-          photos={photos}
           handleCloseModal={handleCloseModal}
           handleDisplayModalPhoto={handleDisplayModalPhoto}
           favClickHandler={favClickHandler}
+          similarPhotos={similarPhotos}
         /> : null}
 
     </div>

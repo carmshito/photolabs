@@ -7,7 +7,8 @@ const ACTIONS = {
   DISPLAY_MODAL: 'DISPLAY_PHOTO_DETAILS',
   SET_PHOTO_DATA: 'SET_PHOTO_DATA',
   SET_TOPIC_DATA: 'SET_TOPIC_DATA',
-  GET_PHOTOS_BY_TOPICS: 'GET_PHOTOS_BY_TOPICS'
+  GET_PHOTOS_BY_TOPICS: 'GET_PHOTOS_BY_TOPICS',
+  SET_SIMILAR_PHOTOS: 'SET_SIMILAR_PHOTOS'
 };
 
 const reducer = (state, action) => {
@@ -24,6 +25,8 @@ const reducer = (state, action) => {
       return { ...state, topicData: action.payload };
     case ACTIONS.GET_PHOTOS_BY_TOPICS:
       return { ...state, photoData: action.payload };
+    case ACTIONS.SET_SIMILAR_PHOTOS:
+      return { ...state, similarPhotos: action.payload};
     default:
       return state;
   }
@@ -37,6 +40,7 @@ const useApplicationData = () => {
     isOpen: false,
     photoData: [],
     topicData: [],
+    similarPhotos: []
   };
 
   const [state, dispatch] = useReducer(reducer, defaultState);
@@ -72,43 +76,55 @@ const useApplicationData = () => {
       });
   };
 
+  
   // fetch all photos
   const fetchAllPhotos = () => {
     axios.get('/api/photos')
-      .then((res) => {
-        const photos = res.data;
-        dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: photos });
-      })
-      .catch((err) => {
-        console.error("Error fetching topic photos", err);
-      });
+    .then((res) => {
+      const photos = res.data;
+      dispatch({ type: ACTIONS.SET_PHOTO_DATA, payload: photos });
+    })
+    .catch((err) => {
+      console.error("Error fetching topic photos", err);
+    });
   };
-
+  
   // open and close modal state
   const openModal = () => {
     dispatch({ type: ACTIONS.DISPLAY_MODAL, payload: true });
   };
-
+  
   const closeModal = () => {
     dispatch({ type: ACTIONS.DISPLAY_MODAL, payload: false });
   };
-
+  
   // click handler to close modal
   const handleCloseModal = () => {
     closeModal();
   };
-
+  
   // click handler to display modal photo
   const handleDisplayModalPhoto = (photo) => {
     dispatch({ type: ACTIONS.SELECT_PHOTO, payload: photo });
     openModal();
-  };
 
+    const photos = state.photoData;
+    const photoId = photo.id;
+
+    for (const pic of photos) {
+      if (photoId === pic.id) {
+        const similarPhotos = pic.similar_photos;
+        dispatch({ type: ACTIONS.SET_SIMILAR_PHOTOS, payload: similarPhotos});
+      }
+    }
+
+  };
+  
   // fav photos state
   const setFavPhotos = (favPhotos) => {
     dispatch({ type: ACTIONS.FAV_PHOTO_ADDED, payload: favPhotos });
   };
-
+  
   // click handler for fav photos
   const favClickHandler = (id) => {
     const { favPhotos } = state;
@@ -118,7 +134,7 @@ const useApplicationData = () => {
       setFavPhotos([...favPhotos, id]);
     }
   };
-
+  
   return {
     openModal,
     closeModal,
@@ -133,6 +149,7 @@ const useApplicationData = () => {
     isOpen: state.isOpen,
     photos: state.photoData,
     topics: state.topicData,
+    similarPhotos: state.similarPhotos
   };
 };
 
